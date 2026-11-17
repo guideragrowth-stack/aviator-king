@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviator King</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101522;color:white;font-family:Arial,sans-serif;text-align:center}
+header{padding:22px;background:#192235}
+h1{color:#ffbd36;font-size:32px}
+.hero{padding:45px 18px}
+.hero h2{font-size:29px}
+.hero p{color:#c4cbd8;line-height:1.7}
+.game{margin:15px auto;padding:25px;max-width:420px;background:#1c2940;border-radius:18px}
+#multiplier{font-size:48px;color:#ffbd36;font-weight:bold;margin:25px}
+button{background:#ffbd36;color:#151515;border:0;padding:15px 25px;border-radius:9px;font-size:17px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
+.note{font-size:13px;color:#aeb8c9}
+footer{padding:25px;color:#aeb8c9}
+</style>
+</head>
+<body>
+<header>
+<h1>✈ AVIATOR KING</h1>
+<p>Your Flight. Your Experience.</p>
+</header>
+<section class="hero">
+<h2>WELCOME TO AVIATOR KING</h2>
+<p>Experience the excitement of flight with our free interactive demo.</p>
+</section>
+<div class="game">
+<h2>FLIGHT DEMO</h2>
+<div id="multiplier">1.00x</div>
+<p id="status">Ready for takeoff?</p>
+<button id="start" onclick="startFlight()">START DEMO</button>
+<p class="note">Free simulation. No deposits or real-money betting.</p>
+</div>
+<section class="hero">
+<h2>ABOUT US</h2>
+<p>Aviator King is a demo gaming experience built for entertainment. Explore the flight simulation and enjoy the experience.</p>
+</section>
+<footer>
+<p>© 2026 Aviator King</p>
+<p>18+ | Entertainment demo only</p>
+</footer>
+<script>
+let timer;
+function startFlight(){
+let value=1;
+let seconds=0;
+let button=document.getElementById("start");
+let display=document.getElementById("multiplier");
+let status=document.getElementById("status");
+button.disabled=true;
+button.textContent="FLYING...";
+status.textContent="Your flight is in progress!";
+display.style.color="#ffbd36";
+timer=setInterval(()=>{
+seconds++;
+value+=Math.random()*0.15+0.03;
+display.textContent=value.toFixed(2)+"x";
+if(seconds>=25 || Math.random()<0.08){
+clearInterval(timer);
+display.style.color="#ff5555";
+status.textContent="Flight ended! Try again.";
+button.disabled=false;
+button.textContent="START DEMO";
+}
+},400);
+}
+</script>
+</body>
+</html>
